@@ -9,16 +9,16 @@ export default function LogoutButton() {
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut();
-		router.push("/auth"); // Redirect to auth page
+		router.push("/login");
 		router.refresh();
 	};
 
 	return (
 		<button
 			onClick={handleLogout}
-			className="flex items-center gap-2 rounded-md bg-red-50 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-100"
+			className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
 		>
-			<LogOut size={16} />
+			<LogOut size={18} />
 			Logout
 		</button>
 	);
