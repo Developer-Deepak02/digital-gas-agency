@@ -54,7 +54,7 @@ Use these credentials to access the Admin Dashboard functionalities.
 
 | Admin Dashboard | User Booking |
 | :---: | :---: |
-| ![Admin Dashboard](https://via.placeholder.com/600x300?text=Admin+Dashboard+Screenshot) | ![User Booking](https://via.placeholder.com/600x300?text=User+Booking+Screenshot) |
+| ![Admin Dashboard](./screenshots/admin-d.png) | ![User Booking](./screenshots/user-b.png) |
 
 ---
 
