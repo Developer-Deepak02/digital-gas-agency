@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔥 BookMyGas - Digital Gas Booking System
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=for-the-badge&logo=supabase)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Styling-blue?style=for-the-badge&logo=tailwind-css)
+![Status](https://img.shields.io/badge/Status-Feature%20Complete-success?style=for-the-badge)
 
-First, run the development server:
+**BookMyGas** is a comprehensive, full-stack web application designed to digitize and streamline the LPG cylinder booking process. It features a robust dual-role system (User & Admin) with real-time quota management, dynamic pricing, and secure role-based access control.
 
+---
+
+## 🚀 Key Features
+
+### 🌟 For Users
+* **Seamless Booking:** Book cylinders instantly with real-time stock checks.
+* **Quota Management:** Automated tracking of subsidized cylinder quota (12/year).
+* **Order Tracking:** Visual timeline to track order status (Pending → Approved → Delivered).
+* **Support System:** Integrated help desk to raise tickets and view admin replies.
+* **Mobile Responsive:** Fully optimized UI for booking on the go.
+
+### 🛡️ For Admins
+* **Dashboard Analytics:** Interactive charts showing revenue, daily sales, and user growth.
+* **Dynamic Pricing:** Update cylinder prices globally with a single click.
+* **Request Management:** Approve or reject new connection requests and bookings.
+* **Excel Reports:** One-click export of sales data to CSV for offline accounting.
+* **Secure:** Row Level Security (RLS) ensures admins only see what they need to.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** [Next.js 14](https://nextjs.org/) (App Router, Server Actions)
+* **Backend & Auth:** [Supabase](https://supabase.com/) (PostgreSQL, Auth, RLS)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **Charts:** [Recharts](https://recharts.org/)
+
+---
+
+## 🔐 Admin Credentials (Demo)
+
+Use these credentials to access the Admin Dashboard functionalities.
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@bookmygas.com` | `admin123` |
+| **User** | `user@test.com` | `user123` |
+
+> *Note: These are placeholder credentials. Please update them in your database for production use.*
+
+---
+
+## 📸 Screenshots
+
+| Admin Dashboard | User Booking |
+| :---: | :---: |
+| ![Admin Dashboard](https://via.placeholder.com/600x300?text=Admin+Dashboard+Screenshot) | ![User Booking](https://via.placeholder.com/600x300?text=User+Booking+Screenshot) |
+
+---
+
+## 🔮 Upcoming Updates
+
+We are constantly improving BookMyGas. Here is what's coming next:
+
+* **📧 Email Notifications (Realism)**
+    * Integration with **Resend** or **Nodemailer**.
+    * Users will receive real-time email alerts for "Order Approved", "Out for Delivery", and "Support Ticket Resolved".
+
+* **📄 PDF Invoice Generation (High Value)**
+    * Automated PDF receipt generation for every completed order.
+    * Downloadable directly from the User History section.
+
+---
+
+
+
+## ⚡ Getting Started
+
+Follow these steps to set up the project locally.
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [https://github.com/your-username/book-my-gas.git](https://github.com/your-username/book-my-gas.git)
+cd book-my-gas 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install
+# or
+yarn install
+``` 
+### 3. Configure Environment Variables
+Create a .env.local file in the root directory and add your Supabase keys:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Code snippet
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+### 4. Run the Development Server
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm run dev
+Open http://localhost:3000 with your browser to see the result.
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Made with ❤️ by Deepak
