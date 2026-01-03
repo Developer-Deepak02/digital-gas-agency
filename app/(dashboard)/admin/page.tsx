@@ -12,6 +12,7 @@ import {
 	Bell,
 } from "lucide-react";
 import RevenueChart from "@/components/admin/RevenueChart";
+import ExportButton from "@/components/admin/ExportButton";
 
 export default async function AdminDashboardHome() {
 	const supabase = await createClient();
@@ -30,9 +31,10 @@ export default async function AdminDashboardHome() {
 	if (profile?.role !== "admin") redirect("/user");
 
 	// 2. Fetch Data
+	// FIX: Added 'payment_mode' and 'profiles(full_name)' for the Export Report
 	const { data: bookings } = await supabase
 		.from("bookings")
-		.select("id, status, created_at, amount")
+		.select("id, status, created_at, amount, payment_mode, profiles(full_name)")
 		.order("created_at", { ascending: true });
 
 	const { count: userCount } = await supabase
@@ -49,8 +51,6 @@ export default async function AdminDashboardHome() {
 		.limit(3);
 
 	// 3. Stats Calculation
-
-	// FIX: Revenue now includes BOTH 'approved' (Out for Delivery) and 'delivered' (Completed)
 	const totalRevenue =
 		bookings?.reduce(
 			(acc, curr) =>
@@ -64,14 +64,12 @@ export default async function AdminDashboardHome() {
 	const pendingCount =
 		bookings?.filter((b) => b.status === "pending").length || 0;
 
-	// FIX: This now counts items that are fully delivered
 	const deliveredCount =
 		bookings?.filter((b) => b.status === "delivered").length || 0;
 
 	// 4. Chart Data Processing
 	const chartDataMap = new Map();
 	bookings?.forEach((booking) => {
-		// FIX: Chart now includes both approved and delivered
 		if (booking.status === "approved" || booking.status === "delivered") {
 			const date = new Date(booking.created_at).toLocaleDateString("en-IN", {
 				day: "numeric",
@@ -88,8 +86,8 @@ export default async function AdminDashboardHome() {
 
 	return (
 		<div className="space-y-8 pb-8">
-			{/* Header */}
-			<div className="flex items-center justify-between">
+			{/* Header - UPDATED WITH EXPORT BUTTON */}
+			<div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
 				<div>
 					<h1 className="text-3xl font-bold tracking-tight text-gray-900">
 						Admin Overview
@@ -98,13 +96,25 @@ export default async function AdminDashboardHome() {
 						Welcome back. Here is what's happening today.
 					</p>
 				</div>
-				<div className="text-sm text-gray-500 bg-white px-4 py-2 rounded-full border shadow-sm">
-					{new Date().toLocaleDateString("en-IN", {
-						weekday: "long",
-						year: "numeric",
-						month: "long",
-						day: "numeric",
-					})}
+
+				<div className="flex items-center gap-3">
+					{/* Date Badge (Hidden on very small screens to save space) */}
+					<div className="hidden md:block text-sm text-gray-500 bg-white px-4 py-2 rounded-full border shadow-sm w-fit">
+						{new Date().toLocaleDateString("en-IN", {
+							weekday: "long",
+							year: "numeric",
+							month: "long",
+							day: "numeric",
+						})}
+					</div>
+
+					{/* NEW EXPORT BUTTON */}
+					<ExportButton
+						data={bookings || []}
+						filename={`Sales_Report_${
+							new Date().toISOString().split("T")[0]
+						}.csv`}
+					/>
 				</div>
 			</div>
 
@@ -189,7 +199,7 @@ export default async function AdminDashboardHome() {
 
 			{/* MAIN DASHBOARD CONTENT */}
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-				{/* LEFT: CHART (Takes 2/3 width) - UPDATED STRUCTURE */}
+				{/* LEFT: CHART (Takes 2/3 width) */}
 				<div className="lg:col-span-2 flex flex-col h-full min-h-[400px]">
 					<div className="flex-1 bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
 						<RevenueChart data={chartData} />

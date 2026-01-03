@@ -79,21 +79,21 @@ export default function UsersTable({ users }: { users: any[] }) {
 				/>
 			)}
 
-			{/* TABLE */}
-			<div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+			{/* TABLE - Updated for Mobile Scrolling */}
+			<div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
 				<table className="min-w-full divide-y divide-gray-200">
 					<thead className="bg-gray-50/50">
 						<tr>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								User
 							</th>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Contact
 							</th>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Connection Status
 							</th>
-							<th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Actions
 							</th>
 						</tr>
@@ -104,7 +104,7 @@ export default function UsersTable({ users }: { users: any[] }) {
 								key={user.id}
 								className="hover:bg-gray-50/50 transition-colors"
 							>
-								<td className="px-6 py-4">
+								<td className="px-6 py-4 whitespace-nowrap">
 									<div className="flex items-center gap-3">
 										<div className="h-8 w-8 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center font-bold text-xs">
 											{user.full_name?.charAt(0) || "U"}
@@ -125,13 +125,13 @@ export default function UsersTable({ users }: { users: any[] }) {
 										</div>
 									</div>
 								</td>
-								<td className="px-6 py-4">
+								<td className="px-6 py-4 whitespace-nowrap">
 									<div className="text-sm text-gray-600">{user.email}</div>
 									<div className="text-xs text-gray-400 mt-0.5">
 										{user.mobile || "-"}
 									</div>
 								</td>
-								<td className="px-6 py-4">
+								<td className="px-6 py-4 whitespace-nowrap">
 									<span
 										className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize border ${
 											user.connection_status === "active"
@@ -147,7 +147,7 @@ export default function UsersTable({ users }: { users: any[] }) {
 										{user.connection_status || "Not Applied"}
 									</span>
 								</td>
-								<td className="px-6 py-4 text-right">
+								<td className="px-6 py-4 text-right whitespace-nowrap">
 									<button
 										onClick={() => setSelectedUser(user)}
 										className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 text-gray-700 hover:text-orange-600 hover:border-orange-200 rounded-lg text-xs font-medium transition-colors shadow-sm"

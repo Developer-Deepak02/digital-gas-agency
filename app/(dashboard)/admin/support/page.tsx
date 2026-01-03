@@ -132,7 +132,7 @@ export default function AdminSupportInbox() {
 							ticket.admin_reply && (
 								<div className="bg-green-50 p-4 rounded-lg border border-green-100 flex gap-3 animate-in fade-in">
 									<CornerDownRight
-										className="text-green-600 flex-shrink-0 mt-1"
+										className="text-green-600 shrink-0 mt-1"
 										size={18}
 									/>
 									<div>

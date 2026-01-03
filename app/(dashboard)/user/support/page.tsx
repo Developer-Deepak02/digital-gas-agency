@@ -62,13 +62,16 @@ export default function SupportPage() {
 
 		const formData = new FormData(e.target as HTMLFormElement);
 		const subject = formData.get("subject") as string;
-		const orderId = formData.get("orderId") as string;
+		const orderIdInput = formData.get("orderId") as string;
 		const message = formData.get("message") as string;
+
+		// FIX: Convert empty string to NULL to prevent Database Error
+		const orderId = orderIdInput.trim() === "" ? null : orderIdInput.trim();
 
 		const { error } = await supabase.from("support_tickets").insert({
 			user_id: userId,
 			subject,
-			order_id: orderId,
+			order_id: orderId, // Now sends NULL if empty
 			message,
 			status: "open",
 		});
@@ -77,7 +80,8 @@ export default function SupportPage() {
 			setSent(true);
 		} else {
 			console.error(error);
-			alert("Failed to send message. Please try again.");
+			// Show the actual error message to help debugging
+			alert(`Failed to send message: ${error.message}`);
 		}
 		setLoading(false);
 	};

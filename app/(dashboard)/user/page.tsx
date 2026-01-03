@@ -7,7 +7,6 @@ import {
 	Zap,
 	History,
 	ArrowRight,
-	AlertCircle,
 	Clock,
 } from "lucide-react";
 import NotificationBanner from "@/components/user/NotificationBanner";
@@ -46,16 +45,17 @@ export default async function UserHomePage() {
 								</span>{" "}
 								remaining for this year.
 							</p>
-							<div className="mt-8 flex gap-4">
+							{/* FIX: Buttons stack on mobile, side-by-side on desktop */}
+							<div className="mt-8 flex flex-col sm:flex-row gap-4">
 								<Link
 									href="/user/book"
-									className="rounded-md bg-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 flex items-center gap-2"
+									className="rounded-md bg-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 flex items-center justify-center gap-2"
 								>
 									<Flame size={18} /> Book Now
 								</Link>
 								<Link
 									href="/user/history"
-									className="rounded-md bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20 flex items-center gap-2"
+									className="rounded-md bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20 flex items-center justify-center gap-2"
 								>
 									<History size={18} /> View History
 								</Link>

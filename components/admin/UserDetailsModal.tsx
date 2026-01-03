@@ -49,9 +49,10 @@ export default function UserDetailsModal({
 
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-			<div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
+			{/* FIX: Changed max-h to 85vh for better mobile fit */}
+			<div className="bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[85vh]">
 				{/* Header */}
-				<div className="bg-slate-900 p-5 flex justify-between items-center text-white">
+				<div className="bg-slate-900 p-4 flex justify-between items-center text-white shrink-0">
 					<div className="flex items-center gap-3">
 						<div className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center text-lg font-bold">
 							{user.full_name?.charAt(0) || "U"}
@@ -73,8 +74,8 @@ export default function UserDetailsModal({
 					</button>
 				</div>
 
-				{/* Content */}
-				<div className="p-6 overflow-y-auto space-y-6">
+				{/* Content - FIX: Responsive padding */}
+				<div className="p-4 sm:p-6 overflow-y-auto space-y-6">
 					{/* Status Badge */}
 					<div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-100">
 						<span className="text-sm font-medium text-gray-500">
@@ -102,9 +103,9 @@ export default function UserDetailsModal({
 						<div className="space-y-3">
 							<div className="flex items-center gap-3 p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
 								<Mail size={18} className="text-gray-400" />
-								<div>
+								<div className="overflow-hidden">
 									<p className="text-xs text-gray-400">Email Address</p>
-									<p className="text-sm font-medium text-gray-900">
+									<p className="text-sm font-medium text-gray-900 truncate">
 										{user.email}
 									</p>
 								</div>
@@ -139,7 +140,8 @@ export default function UserDetailsModal({
 						<h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
 							Account Info
 						</h4>
-						<div className="grid grid-cols-2 gap-4">
+						{/* FIX: Stack vertically on small screens */}
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 							<div className="p-3 border border-gray-100 rounded-lg">
 								<div className="flex items-center gap-2 text-gray-400 mb-1">
 									<Flame size={14} /> <span className="text-xs">Quota</span>

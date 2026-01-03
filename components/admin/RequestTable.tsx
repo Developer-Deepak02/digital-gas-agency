@@ -67,7 +67,8 @@ export default function RequestTable({ bookings }: { bookings: any[] }) {
 				/>
 			)}
 
-			<div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+			{/* FIX: Added overflow-x-auto for horizontal scroll on mobile */}
+			<div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
 				<table className="min-w-full divide-y divide-gray-200">
 					<thead className="bg-gray-50/50">
 						<tr>

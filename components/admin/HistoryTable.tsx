@@ -97,24 +97,24 @@ export default function HistoryTable({ bookings }: { bookings: any[] }) {
 				</div>
 			)}
 
-			{/* 3. THE TABLE */}
-			<div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+			{/* 3. THE TABLE - Updated for Mobile Scrolling */}
+			<div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
 				<table className="min-w-full divide-y divide-gray-200">
 					<thead className="bg-gray-50/50">
 						<tr>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Order ID
 							</th>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Customer
 							</th>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Status
 							</th>
-							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Amount
 							</th>
-							<th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase">
+							<th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase whitespace-nowrap">
 								Actions
 							</th>
 						</tr>
@@ -122,12 +122,12 @@ export default function HistoryTable({ bookings }: { bookings: any[] }) {
 					<tbody className="divide-y divide-gray-200 bg-white">
 						{bookings.map((booking) => (
 							<tr key={booking.id} className="hover:bg-gray-50/50">
-								<td className="px-6 py-4">
+								<td className="px-6 py-4 whitespace-nowrap">
 									<span className="inline-flex items-center gap-1 rounded bg-gray-100 px-2 py-1 text-xs font-mono text-gray-600">
 										<Hash size={12} /> {booking.id.slice(0, 8)}
 									</span>
 								</td>
-								<td className="px-6 py-4">
+								<td className="px-6 py-4 whitespace-nowrap">
 									<div className="text-sm font-medium text-gray-900">
 										{booking.profiles?.full_name}
 									</div>
@@ -135,7 +135,7 @@ export default function HistoryTable({ bookings }: { bookings: any[] }) {
 										{booking.profiles?.email}
 									</div>
 								</td>
-								<td className="px-6 py-4">
+								<td className="px-6 py-4 whitespace-nowrap">
 									<span
 										className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize border
                     ${
@@ -153,10 +153,10 @@ export default function HistoryTable({ bookings }: { bookings: any[] }) {
 											: booking.status}
 									</span>
 								</td>
-								<td className="px-6 py-4 text-sm font-semibold text-gray-900">
+								<td className="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
 									₹{booking.amount}
 								</td>
-								<td className="px-6 py-4 text-right">
+								<td className="px-6 py-4 text-right whitespace-nowrap">
 									<div className="flex justify-end gap-2 items-center">
 										{/* Mark Delivered Button (Trigger Modal) */}
 										{booking.status === "approved" && (
