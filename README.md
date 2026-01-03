@@ -44,29 +44,19 @@ Use these credentials to access the Admin Dashboard functionalities.
 | Role | Email | Password |
 | :--- | :--- | :--- |
 | **Admin** | `admin@bookmygas.com` | `admin123` |
-| **User** | `user@test.com` | `user123` |
+| **User** | `user1@test.com` | `user123` |
 
-> *Note: These are placeholder credentials. Please update them in your database for production use.*
 
----
-
-## 📸 Screenshots
-
-| Admin Dashboard | User Booking |
-| :---: | :---: |
-| ![Admin Dashboard](./screenshots/admin-d.png) | ![User Booking](./screenshots/user-b.png) |
-
----
 
 ## 🔮 Upcoming Updates
 
 We are constantly improving BookMyGas. Here is what's coming next:
 
-* **📧 Email Notifications (Realism)**
+* **📧 Email Notifications **
     * Integration with **Resend** or **Nodemailer**.
     * Users will receive real-time email alerts for "Order Approved", "Out for Delivery", and "Support Ticket Resolved".
 
-* **📄 PDF Invoice Generation (High Value)**
+* **📄 PDF Invoice Generation **
     * Automated PDF receipt generation for every completed order.
     * Downloadable directly from the User History section.
 
@@ -80,7 +70,8 @@ Follow these steps to set up the project locally.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/book-my-gas.git](https://github.com/your-username/book-my-gas.git)
+git clone [https://github.com/Developer-Deepak02/digital-gas-agency.git](https://github.com/Developer-Deepak02/digital-gas-agency.git)
+cd digital-gas-agency
 cd book-my-gas 
 ```
 
