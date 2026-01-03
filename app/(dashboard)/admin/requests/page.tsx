@@ -26,17 +26,18 @@ export default async function AdminRequestsPage() {
 	}
 
 	// 2. Fetch Pending Bookings + User Details
+	// Update query to fetch mobile and address
 	const { data: bookings } = await supabase
 		.from("bookings")
 		.select(
 			`
       *,
-      profiles (full_name, email)
+      profiles (full_name, email, mobile, address) 
     `
 		)
 		.eq("status", "pending")
 		.order("created_at", { ascending: true });
-
+		
 	return (
 		<div className="space-y-6">
 			<div>

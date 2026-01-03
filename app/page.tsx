@@ -17,10 +17,11 @@ export default async function Home() {
 			.eq("id", user.id)
 			.single();
 
+		// Redirect to the new Home Pages instead of sub-pages
 		if (profile?.role === "admin") {
-			redirect("/admin/requests");
+			redirect("/admin");
 		} else {
-			redirect("/user/book");
+			redirect("/user"); 
 		}
 	}
 }

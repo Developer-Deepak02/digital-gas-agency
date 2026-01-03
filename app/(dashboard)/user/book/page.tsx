@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import BookingForm from "@/components/user/BookingForm";
+import NotificationBanner from "@/components/user/NotificationBanner";
 
 export default async function BookCylinderPage() {
 	const supabase = await createClient();
@@ -10,13 +11,22 @@ export default async function BookCylinderPage() {
 	} = await supabase.auth.getUser();
 	if (!user) redirect("/login");
 
-	// Fetch Quota
+	// FETCH PROFILE WITH ADDRESS & MOBILE
 	const { data: profile } = await supabase
 		.from("profiles")
-		.select("quota_remaining")
+		.select("quota_remaining, mobile, address")
 		.eq("id", user.id)
 		.single();
 
+	// FETCH DYNAMIC PRICE
+	const { data: settings } = await supabase
+		.from("system_settings")
+		.select("value")
+		.eq("key", "cylinder_price")
+		.single();
+
+	const currentPrice = settings ? parseInt(settings.value) : 1000; // Default to 1000 if fetch fails
+	
 	return (
 		<div className="space-y-6">
 			<div className="flex flex-col gap-1">
@@ -28,7 +38,17 @@ export default async function BookCylinderPage() {
 				</p>
 			</div>
 
-			<BookingForm userId={user.id} quota={profile?.quota_remaining ?? 0} />
+			<NotificationBanner />
+
+			<BookingForm
+				userId={user.id}
+				quota={profile?.quota_remaining ?? 0}
+				userProfile={{
+					mobile: profile?.mobile,
+					address: profile?.address,
+				}}
+				currentPrice={currentPrice}
+			/>
 		</div>
 	);
 }
