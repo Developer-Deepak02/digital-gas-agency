@@ -71,8 +71,7 @@ Follow these steps to set up the project locally.
 ### 1. Clone the Repository
 ```bash
 git clone [https://github.com/Developer-Deepak02/digital-gas-agency.git](https://github.com/Developer-Deepak02/digital-gas-agency.git)
-cd digital-gas-agency
-cd book-my-gas 
+cd digital-gas-agency 
 ```
 
 ### 2. Install Dependencies
